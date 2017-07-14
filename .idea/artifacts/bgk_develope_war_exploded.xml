@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="bgk_develope:war exploded">
+    <output-path>$PROJECT_DIR$/bgk_project/bgk_develope/target/bgk_develope</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="bgk_develope" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/bgk_project/bgk_develope/target/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="bgk_develope/web/Web" />
+    </root>
+  </artifact>
+</component>

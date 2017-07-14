@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="bgk_develope:war">
+    <output-path>$PROJECT_DIR$/bgk_project/bgk_develope/target</output-path>
+    <root id="archive" name="bgk_develope.war">
+      <element id="artifact" artifact-name="bgk_develope:war exploded" />
+    </root>
+  </artifact>
+</component>
