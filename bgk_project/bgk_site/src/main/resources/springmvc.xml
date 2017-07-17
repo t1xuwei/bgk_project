@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/mvc  
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+	
+	<!--采用注解方式配置MVC-->
+	<mvc:default-servlet-handler/>
+	
+		<!--扫描控制器类-->
+	<context:component-scan base-package="xuw.bgk.controller" />
+
+	<mvc:annotation-driven />
+
+	<!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">-->
+		<!--<property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>-->
+		<!--&lt;!&ndash;不设置则默认为classpath下的 ValidationMessages.properties-->
+        <!--<property name="validationMessageSource" ref="validatemessageSource"/>&ndash;&gt;-->
+	<!--</bean>-->
+
+	<!--jsp视图解析器-->
+	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="1" />
+	</bean>
+	
+
+
+	<!-- 拦截器配置 -->
+	<!--<mvc:interceptors>	    -->
+		<!--<mvc:interceptor>-->
+	        <!--<mvc:mapping path="/**"/>-->
+	        <!--<bean class="xuw.bgk.intercetor.LoginInterceptor"/>-->
+	    <!--</mvc:interceptor>-->
+	  <!--&lt;!&ndash;   <mvc:interceptor>-->
+	        <!--<mvc:mapping path="/**"/>-->
+	        <!--<bean class="utn.ucs.intercetor.CsrfInterceptor"/>-->
+	    <!--</mvc:interceptor> &ndash;&gt;-->
+	    <!--<mvc:interceptor>-->
+	        <!--<mvc:mapping path="/**"/>-->
+	        <!--<bean class="xuw.bgk.intercetor.PermissionInterceptor"/>-->
+	    <!--</mvc:interceptor>-->
+		<!--&lt;!&ndash;黑名单拦截器&ndash;&gt;-->
+		<!--<mvc:interceptor>-->
+			<!--<mvc:mapping path="/**"/>-->
+			<!--<bean class="xuw.bgk.intercetor.BlackIPInterceptor"/>-->
+		<!--</mvc:interceptor>-->
+	<!--</mvc:interceptors>-->
+	
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+	    <property name="favorPathExtension" value="true" />
+	    <property name="favorParameter" value="true" />
+	    <property name="defaultContentType" value="text/html"/>
+	    <property name="mediaTypes" >
+	        <value>
+	            json=application/json
+	            xml=application/xml
+	        </value>
+	    </property>
+	</bean>
+	<!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->  
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <property name="defaultEncoding" value="UTF-8"/>  
+        <!-- 指定所上传文件的总大小不能超过5M(单位字节) 注意maxSize属性的限制不是针对单个文件，而是所有文件的容量之和 -->
+        <property name="maxUploadSize" value="5242880"/>  
+    </bean>  
+    <!-- 启动JSON格式的配置 -->
+	<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">    
+	<!--解决 HttpMediaTypeNotAcceptableException: Could not find acceptable representation -->
+	      <property name="supportedMediaTypes">
+	           <list>
+	               <value>text/html;charset=UTF-8;text/json</value>
+	           </list>
+	       </property>
+	</bean>
+	 <bean id="textPlainMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter">    
+	      <property name="supportedMediaTypes">
+	           <list>
+	               <value>text/html;charset=UTF-8</value>
+	               <value>text/plain;charset=UTF-8</value>
+	               <value>application/json;charset=UTF-8</value>
+	           </list>
+	       </property>
+	</bean>
+	 <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+		  <list>
+		    <ref bean="jacksonMessageConverter"/>
+		    <ref bean="textPlainMessageConverter"/>
+		  </list>
+		</property>
+	</bean>
+
+</beans>
