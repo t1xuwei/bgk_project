@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/data/repository
+        http://www.springframework.org/schema/data/repository/spring-repository-1.8.xsd
+		http://www.springframework.org/schema/data/jpa
+		http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd">
+
+	<!-- 鑷姩鍔犺浇鏋勫缓bean -->
+    <context:component-scan base-package="xuw.bgk">
+    	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+	<!-- 璇诲彇ClassPath涓殑properties閰嶇疆鏂囦欢 -->
+	<context:property-placeholder location="classpath:*.properties"/>
+
+	<!-- 楠岃瘉鐮� -->
+	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+		<property name="config">
+			<bean class="com.google.code.kaptcha.util.Config">
+				<constructor-arg>
+					<props>
+						<prop key="kaptcha.textproducer.font.names">Arial, Helvetica</prop>
+						<prop key="kaptcha.border">no</prop>
+						<prop key="kaptcha.border.color">0,0,0</prop>
+						<prop key="kaptcha.textproducer.font.color">21,107,139</prop>
+						<prop key="kaptcha.textproducer.font.size">40</prop>
+						<prop key="kaptcha.image.width">160</prop>
+						<prop key="kaptcha.obscurificator.impl">com.google.code.kaptcha.impl.WaterRipple</prop>
+						<prop key="kaptcha.textproducer.char.length">4</prop>
+						<prop key="kaptcha.textproducer.char.string">zxcvbnmasdfghjkqwertyupZXCVBNMASDFGHJKLQWERTYUP23456789</prop>
+						<prop key="kaptcha.word.impl">com.google.code.kaptcha.text.impl.DefaultWordRenderer</prop>
+						<prop key="kaptcha.textproducer.impl">com.google.code.kaptcha.text.impl.DefaultTextCreator</prop>
+						<prop key="kaptcha.word.impl">com.google.code.kaptcha.text.impl.DefaultWordRenderer</prop>
+						<prop key="kaptcha.background.clear.from">255,255,255</prop>
+						<prop key="kaptcha.background.clear.to">255,255,255</prop>
+						<prop key="kaptcha.noise.impl">com.google.code.kaptcha.impl.NoNoise</prop>
+					</props>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
+
+
+
+    <!-- ucsconfig begin-->
+    <!--<jpa:repositories base-package="utn.ucs" entity-manager-factory-ref="entityManagerFactory" factory-class="utn.app.repository.BaseRepositoryFactoryBean"-->
+		<!--transaction-manager-ref="transactionManager"/>-->
+	<!-- -->
+	<!--<bean id="dataSource" class="utn.app.datasource.DynamicDataSource">  -->
+        <!--<property name="targetDataSources">  -->
+            <!--<map key-type="java.lang.String">  -->
+                <!--<entry key="write" value-ref="writeDataSource" /> -->
+                <!--<entry key="read" value-ref="readDataSource" />   -->
+            <!--</map>  -->
+        <!--</property>  -->
+        <!--<property name="defaultTargetDataSource" ref="readDataSource" />  -->
+    <!--</bean> -->
+    <!-- -->
+    <!--<bean id="entityManagerFactory" name="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">-->
+	    <!--<property name="dataSource" ref="dataSource" />-->
+	    <!--<property name="jpaVendorAdapter"> -->
+	        <!--<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"> -->
+	            <!--&lt;!&ndash;<property name="databasePlatform" value="${jpa.dialect}"/>&ndash;&gt;-->
+	            <!--<property name="showSql" value="true" />-->
+	        <!--</bean>-->
+	    <!--</property>-->
+	    <!--<property name="persistenceUnitName" value="ucs"/>-->
+	    <!--<property name="jpaPropertyMap">-->
+			<!--<map>-->
+				<!--<entry key="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>-->
+				<!--<entry key="hibernate.show_sql" value="false"/>-->
+				<!--<entry key="hibernate.format_sql" value="false"/>-->
+				<!--&lt;!&ndash; <entry key="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>-->
+				<!--<entry key="hibernate.cache.use_query_cache" value="true"/>-->
+				<!--<entry key="hibernate.cache.use_second_level_cache" value="true"/> &ndash;&gt;-->
+				<!--<entry key="hibernate.connection.useUnicode" value="true"/>-->
+				<!--<entry key="hibernate.connection.characterEncoding" value="UTF-8"/>-->
+				<!--<entry key="hibernate.connection.isolation" value="2"/>-->
+				<!--<entry key="hibernate.jdbc.fetch_size" value="50"/>-->
+	        <!--</map>-->
+		<!--</property>-->
+	    <!-- -->
+	    <!--&lt;!&ndash;鑷姩鎵弿娉ㄨВ鏂瑰紡閰嶇疆鐨刪ibernate绫绘枃浠�&ndash;&gt;  -->
+        <!--<property name="packagesToScan">  -->
+            <!--<list>  -->
+                <!--<value>utn.ucs.entity</value>  -->
+            <!--</list>  -->
+        <!--</property>  -->
+	<!--</bean>-->
+    <!--&lt;!&ndash;閰嶇疆浜嬪姟绠＄悊鍣�&ndash;&gt;  -->
+    <!--<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">-->
+	    <!--<property name="entityManagerFactory" ref="entityManagerFactory"/>-->
+	<!--</bean>-->
+	 <!--&lt;!&ndash;  Transaction interceptor  &ndash;&gt;-->
+	<!--<bean id="transactionInterceptor" class="utn.app.datasource.TransactionInterceptor">-->
+         <!--<property name="transactionManager" ref="transactionManager" />-->
+         <!--<property name="transactionAttributes">-->
+              <!--<props>-->
+                  	<!--<prop key="insert*">PROPAGATION_REQUIRED,-Exception</prop>  -->
+		            <!--<prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>  -->
+		            <!--<prop key="edit*">PROPAGATION_REQUIRED,-Exception</prop>  -->
+		            <!--<prop key="save*">PROPAGATION_REQUIRED,-Exception</prop>  -->
+		            <!--<prop key="add*">PROPAGATION_REQUIRED,-Exception</prop>  -->
+		            <!--<prop key="new*">PROPAGATION_REQUIRED,-Exception</prop>  -->
+		            <!--<prop key="set*">PROPAGATION_REQUIRED,-Exception</prop>  -->
+		            <!--<prop key="remove*">PROPAGATION_REQUIRED,-Exception</prop>  -->
+		            <!--<prop key="delete*">PROPAGATION_REQUIRED,-Exception</prop>  -->
+		            <!--<prop key="change*">PROPAGATION_REQUIRED,-Exception</prop>  -->
+		            <!--<prop key="put*">PROPAGATION_REQUIRED,-Exception</prop>   -->
+		            <!-- -->
+		            <!--<prop key="get*">PROPAGATION_REQUIRED,readOnly,-Exception</prop>  -->
+		            <!--<prop key="find*">PROPAGATION_REQUIRED,readOnly,-Exception</prop>  -->
+		            <!--<prop key="load*">PROPAGATION_REQUIRED,readOnly,-Exception</prop>  -->
+		            <!--<prop key="search*">PROPAGATION_REQUIRED,readOnly,-Exception</prop>  -->
+		      	  	<!--<prop key="query*">PROPAGATION_REQUIRED,readOnly,-Exception</prop>   -->
+			        <!--<prop key="use*">PROPAGATION_REQUIRED,readOnly,-Exception</prop>  -->
+			        <!--<prop key="count*">PROPAGATION_REQUIRED,readOnly,-Exception</prop>  -->
+			        <!--<prop key="list*">PROPAGATION_REQUIRED,readOnly,-Exception</prop>-->
+			        <!--<prop key="*">PROPAGATION_REQUIRED,readOnly,-Exception</prop>-->
+              <!--</props>-->
+         <!--</property>-->
+         <!--<property name="prefixs">-->
+			<!--<set>-->
+			<!--<value>insert</value> -->
+			<!--<value>update</value> -->
+			<!--<value>edit</value> -->
+			<!--<value>save</value> -->
+			<!--<value>add</value> -->
+			<!--<value>new</value> -->
+			<!--<value>set</value> -->
+			<!--<value>remove</value> -->
+			<!--<value>delete</value> -->
+			<!--<value>change</value> -->
+			<!--<value>put</value> -->
+			<!--</set>    		-->
+    	<!--</property>-->
+     <!--</bean>-->
+
+	<!--&lt;!&ndash; BeanName auto proxy to define the interceptor &ndash;&gt;-->
+    <!--<bean class="utn.extension.aop.UtnBeanNameAutoProxyCreator">-->
+         <!--<property name="beanNames">-->
+              <!--<list>-->
+                   <!--<value>*Service</value>-->
+              <!--</list>-->
+         <!--</property>-->
+        <!--<property name="skipBeanNames">-->
+         	<!--<list>-->
+         		<!--<value>*SolrService</value>-->
+         		<!--<value>*MongoService</value>-->
+         	<!--</list>-->
+         <!--</property>-->
+         <!--<property name="interceptorNames">-->
+              <!--<list>-->
+                   <!--<value>transactionInterceptor</value>-->
+              <!--</list>-->
+         <!--</property>-->
+     <!--</bean>-->
+	 <!-- -->
+	 <!-- -->
+
+    <!-- -->
+	<!--<bean id="parentDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" -->
+		 <!--destroy-method="close" abstract="true">-->
+			<!--<property name="driverClass" value="com.mysql.jdbc.Driver" />-->
+			<!--<property name="jdbcUrl" >-->
+				<!--<value><![CDATA[${mysql.default.jdbcUrl}]]></value>-->
+			<!--</property>-->
+	        <!--<property name="user" value="${mysql.default.user}" />-->
+	        <!--<property name="password">-->
+	        	<!--<value><![CDATA[${mysql.default.password}]]></value>-->
+	        <!--</property>-->
+	        <!--<property name="minPoolSize" value="2" />-->
+	        <!--<property name="maxPoolSize" value="120" />-->
+	        <!--<property name="maxIdleTime" value="1800" />-->
+	        <!--<property name="acquireIncrement" value="2" />-->
+	        <!--<property name="maxStatements" value="0" />-->
+	        <!--<property name="initialPoolSize" value="2" />-->
+	        <!--<property name="idleConnectionTestPeriod" value="60" />-->
+	        <!--<property name="acquireRetryAttempts" value="30" />-->
+	        <!--<property name="breakAfterAcquireFailure" value="true" />-->
+	        <!--<property name="testConnectionOnCheckout" value="false" />-->
+	<!--</bean>-->
+	<!-- -->
+	<!--&lt;!&ndash; 璇绘暟鎹簮&ndash;&gt;     -->
+	<!--<bean id="readDataSource" parent="parentDataSource">-->
+			 <!--<property name="jdbcUrl">-->
+			 	<!--<value><![CDATA[${mysql.read.jdbcUrl}]]></value>-->
+			 <!--</property> -->
+	        <!--<property name="user" value="${mysql.read.user}" />-->
+	        <!--<property name="password">-->
+	        	<!--<value><![CDATA[${mysql.read.password}]]></value>-->
+	        <!--</property>-->
+	<!--</bean>  -->
+	    <!-- -->
+	<!--&lt;!&ndash; 鍐欐暟鎹簮&ndash;&gt;  -->
+	<!--<bean id="writeDataSource" parent="parentDataSource"> -->
+	         <!--<property name="jdbcUrl">-->
+	         	<!--<value><![CDATA[${mysql.write.jdbcUrl}]]></value>-->
+	         <!--</property>-->
+	        <!--<property name="user" value="${mysql.write.user}" />-->
+	        <!--<property name="password">-->
+	        	<!--<value><![CDATA[${mysql.write.password}]]></value>-->
+	        <!--</property>-->
+	<!--</bean>  -->
+	<!-- -->
+	<!--<bean id="servletContextModel" class="utn.ucs.listener.model.ServletContextModel">-->
+		<!--<property name="detailUrl"  value="${detailUrl}" />-->
+		<!--<property name="version"    value="20170408" />-->
+		<!--<property name="currentEnv"    value="${currentEnv}" />-->
+		<!--<property name="staticResource"    value="${static.resource}" />-->
+		<!--<property name="indexDomain"    value="http://shuidi.cn" />-->
+	<!--</bean>-->
+	<!-- -->
+	<!--<bean id="thirdUrl" class="utn.ucs.listener.model.ThirdUrl">-->
+		<!--<property name="goverSay"  value="${goverSay}" />-->
+		<!--<property name="outifs1"  value="${outifs1}" />-->
+		<!--<property name="outifs2"  value="${outifs2}" />-->
+		<!--<property name="outifs3"  value="${outifs3}" />-->
+	<!--</bean>-->
+	<!-- ucsconfig end-->
+
+</beans>
