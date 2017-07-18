@@ -34,8 +34,8 @@ public class FirstController {
 
     @RequestMapping(value = "/first", method = RequestMethod.GET)
     @ResponseBody
-    public String firstVisit() {
-        User user = userMapper.findByName("xuwe");
+    public String firstVisit(String userName) {
+        User user = userMapper.findByName(userName);
         System.out.println(user.getEmail());
         return "u got me!";
     }
