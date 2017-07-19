@@ -40,5 +40,10 @@ public class FirstController {
         return "u got me!";
     }
 
+    @RequestMapping(value="firstview")
+    public String firstView(){
+        return "test";
+    }
+
 
 }
