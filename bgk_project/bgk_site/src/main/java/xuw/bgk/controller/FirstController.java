@@ -10,6 +10,8 @@ import xuw.bgk.entity.User;
 
 import javax.annotation.Resource;
 import java.lang.reflect.Array;
+import java.math.BigDecimal;
+import java.util.*;
 
 /**
  * Created by admin on 2017/7/14.
@@ -21,15 +23,23 @@ public class FirstController {
     private UserMapper userMapper;
 
     public static void main(String[] args) {
-        System.out.println("hello");
-        String[] strs = new String[0];
-        System.out.println(strs.length);
-        for (String str : strs) {
-            System.out.println("s");
-            System.out.println(str);
-        }
+//        String[] strs = new String[3];
+//        strs[0] = "sss";
+//        System.out.println(strs.length);
+//        System.out.println("end");
+       /* @Override
+        public boolean equals(Object obj) {
+            return this.getId().equals(((User)obj).getId());
+        }*/
+        User u1 = new User();
+        u1.setId(1L);
+        User u2 = new User();
+        u2.setId(1L);
+        System.out.println(u1.hashCode());
+        System.out.println(u2.hashCode());
+        System.out.println(u1.equals(u2));
+        Map m = new HashMap();
 
-        System.out.println(ArrayUtils.isEmpty(strs));
     }
 
     @RequestMapping(value = "/first", method = RequestMethod.GET)
@@ -47,3 +57,6 @@ public class FirstController {
 
 
 }
+
+
+

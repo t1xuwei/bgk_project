@@ -1,9 +1,11 @@
 package xuw.bgk.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by admin on 2017/7/18.
  */
-public class User {
+public class User implements Serializable {
 
     private Long id;
     private String userName;
@@ -40,5 +42,10 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.getId().equals(((User)obj).getId());
     }
 }
