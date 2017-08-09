@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page language="java" pageEncoding="GB2312"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
   <title>关于我们-水滴信用</title>
@@ -13,6 +12,7 @@
 </head>
 <body >
 <div>HELLO!中文</div>
+<div>3+2=<%=5%></div>
 
 </body>
 </html>
