@@ -12,12 +12,16 @@ public class DataDictionary {
     static{
         demoList.add("单例模式(饿汉式懒汉式,注意懒汉式线程安全)");
         demoList.add("请写出死锁的demo");
-        demoList.add("计算两个有序数列的交集");
-        demoList.add("链表的实现");
+        demoList.add("链表实现");
+        demoList.add("计算有序数列的交集合");
+
     }
 
     public static List<String> getDemoList(){
         return demoList;
     }
 
+    public static void main (String[] args){
+
+    }
 }
