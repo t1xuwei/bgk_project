@@ -16,7 +16,7 @@
 	<context:component-scan base-package="xuw.bgk.controller" />
 
 	<mvc:annotation-driven />
-
+	<mvc:resources mapping="/WEB-INF/static/**" location="/WEB-INF/static/" />
 	<!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">-->
 		<!--<property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>-->
 		<!--&lt;!&ndash;不设置则默认为classpath下的 ValidationMessages.properties-->

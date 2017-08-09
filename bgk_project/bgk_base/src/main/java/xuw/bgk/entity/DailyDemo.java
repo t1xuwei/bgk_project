@@ -1,9 +1,12 @@
 package xuw.bgk.entity;
 
+import org.springframework.context.annotation.Primary;
+
 /**
  * Created by xuw on 2017/8/9.
  */
 public class DailyDemo {
+
     private Integer id;
     private String title;
     private String desc;

@@ -1,18 +1,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ page language="java" pageEncoding="GB2312"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-  <title>╧ьсзнрцг-к╝╣нпесц</title>
-  <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+  <title>Ф≈╔Е╦╦Е╟▐Г╗▀Е╨▐</title>
   <meta http-equiv="pragma" content="no-cache" />
   <meta http-equiv="cache-control" content="no-cache" />
   <meta http-equiv="expires" content="0" />
-  <meta http-equiv="keywords" content="фСр╣песц,фСр╣╡Ия╞,╧╓илпео╒,фСр╣╧╓ил,╧╓ил╡Ия╞,фСр╣песц╡Ия╞,фСр╣╧╓илпео╒╡Ия╞" />
-  <meta http-equiv="description" content="к╝╣нпесцйгтз╧З╪р╥╒╦дн╞ж╦╣╪об╣д╢СйЩ╬щфСр╣песцфю╪шф╫л╗║ёк╝╣нпесц╪╞╨оиГ╩А╦В╫Гпео╒,╤тфСр╣╫Ьппвш╨офю╪ш,оРмЬцЯй╣й╠лА╧╘фСр╣оЮ╧ь╣д╧и╤╚,╥╗хк,фСр╣╤тмБм╤вйпео╒,песцпео╒,й╖пе╪гб╪║ё" />
+  <meta http-equiv="keywords" content="Д╪│Д╦ Д©║Г■╗,Д╪│Д╦ Ф÷╔Х╞╒,Е╥╔Е∙├Д©║Ф│╞,Д╪│Д╦ Е╥╔Е∙├,Е╥╔Е∙├Ф÷╔Х╞╒,Д╪│Д╦ Д©║Г■╗Ф÷╔Х╞╒,Д╪│Д╦ Е╥╔Е∙├Д©║Ф│╞Ф÷╔Х╞╒" />
+  <meta http-equiv="description" content="Д╩┘Д╬⌡Ф≈╔Е╦╦Е╗╠Д╧░Д╫©Г■╗" />
+  <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body >
-<div>HELLO!жпнд</div>
-<div>3+2=<%=5%></div>
+<div class="container">
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Ф┬ЁХ©≥И┤▄</a></p>
+  <ul class="list-group">
+    <c:forEach items="${demos}" var="demo">
+      <li class="list-group-item list-group-item-info">${demo.id} ${demo.title}</li>
+    </c:forEach>
+  </ul>
+</div>
+
+
+
+
+<%--<script type="text/javascript">--%>
+  <%--$("#inp").val("hhhhhhhhhhhhhhh");--%>
+<%--</script>--%>
+<script type="text/javascript" src="/static/js/jquery-3.2.1.js"/>
+<script type="text/javascrpit">
+
+</script>
 
 </body>
 </html>
