@@ -27,19 +27,19 @@
         <nav id="bs-navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="../getting-started/" >起步</a>
+                    <a href="../getting-started/" ></a>
                 </li>
                 <li>
-                    <a href="../css/" >全局 CSS 样式</a>
+                    <a href="../css/" >浏览信息</a>
                 </li>
                 <li class="active">
-                    <a href="../components/" >组件</a>
+                    <a href="../components/" >个人定制</a>
                 </li>
                 <li>
-                    <a href="../javascript/" >JavaScript 插件</a>
+                    <a href="../javascript/" >帅气</a>
                 </li>
                 <li>
-                    <a href="../customize/" >定制</a>
+                    <a href="../customize/" >啦啦啦</a>
                 </li>
                 <li><a href="http://www.youzhan.org"  target="_blank">网站实例</a></li>
             </ul>
@@ -50,7 +50,9 @@
         </nav>
     </div>
 </header>
+
 <div class="container">
+
   <input type="hidden" id="demoCount" value="${demoCount}">
   <input type="hidden" id="currentId" value="-1">
   <p><a class="btn btn-primary btn-lg" id="randomSelectButton" href="javascript:void(0);" role="button">戳这里</a></p>

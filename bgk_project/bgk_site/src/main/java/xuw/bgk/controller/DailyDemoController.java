@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import xuw.bgk.entity.DailyDemo;
-import xuw.bgk.service.DailyDemoService;
+import xuw.bgk.service.IDailyDemoService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServlet;
@@ -20,13 +20,13 @@ import java.util.List;
 public class DailyDemoController {
 
     @Resource
-    private DailyDemoService dailyDemoService;
+    private IDailyDemoService dailyDemoService;
 
     @RequestMapping("/demo")
     public String demoList(HttpServletRequest request){
         List<DailyDemo> dailyDemos = dailyDemoService.searchAll();
         Collections.shuffle(dailyDemos);
-        request.setAttribute("demos",dailyDemos);
+        request.setAttribute("demos", dailyDemos);
         request.setAttribute("demoCount",dailyDemos.size());
         return "view/demo";
     }

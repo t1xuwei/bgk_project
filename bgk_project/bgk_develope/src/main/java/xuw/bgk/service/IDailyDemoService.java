@@ -10,13 +10,6 @@ import java.util.List;
 /**
  * Created by xuw on 2017/8/9.
  */
-@Service
-public class DailyDemoService {
-    @Resource
-    private DailyDemoMapper dailyDemoMapper;
-
-
-    public List<DailyDemo> searchAll() {
-        return dailyDemoMapper.searchAll();
-    }
+public interface IDailyDemoService {
+    public List<DailyDemo> searchAll();
 }
