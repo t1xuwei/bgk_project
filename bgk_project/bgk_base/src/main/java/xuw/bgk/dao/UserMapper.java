@@ -1,5 +1,6 @@
 package xuw.bgk.dao;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -15,11 +16,13 @@ public interface UserMapper {
     @Select("select * from tb_user where username=#{username}")
     public User findByName(String username);
 
-    //注意自动增长主键时的方法不用有返回�??
-    public void save(User account);
+
+    public void save(User user);
 
     @Update("update tb_user set password=#{password} where username =#{username} ")
     public void changePwdByPhone(@Param(value = "username") String phone, @Param(value = "password") String password);
 
-    User searchByUserNameAndPassword(String userName, byte[] bytes);
+    @Select("select * from tb_user where username=#{username} and password=#{password}")
+    User searchByUserNameAndPassword(@Param(value="username")String username,@Param(value="password") String password);
+
 }

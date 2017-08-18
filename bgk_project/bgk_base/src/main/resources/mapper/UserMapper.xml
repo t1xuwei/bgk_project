@@ -5,6 +5,8 @@
 <mapper namespace="xuw.bgk.dao.UserMapper">
 
 
-
+        <insert id="save" parameterType="User"  useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+                insert into tb_user(username,password) values(#{username},#{password})
+        </insert>
 
 </mapper>

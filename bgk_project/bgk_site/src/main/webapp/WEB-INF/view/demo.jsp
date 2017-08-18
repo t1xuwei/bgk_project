@@ -13,44 +13,7 @@
 
 </head>
 <body >
-<header class="navbar navbar-static-top bs-docs-nav" id="top">
-    <div class="container">
-        <div class="navbar-header">
-            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-          <%--  <a href="../" class="navbar-brand">嘿习惯</a>--%>
-        </div>
-        <nav id="bs-navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="../getting-started/" ></a>
-                </li>
-                <li>
-                    <a href="../css/" >浏览信息</a>
-                </li>
-                <li class="active">
-                    <a href="../components/" >个人定制</a>
-                </li>
-                <li>
-                    <a href="../javascript/" >帅气</a>
-                </li>
-                <li>
-                    <a href="../customize/" >啦啦啦</a>
-                </li>
-                <li><a href="http://www.youzhan.org"  target="_blank">网站实例</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <!-- <li><a href="http://mb.bootcss.com" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click', 'themes'])" target="_blank">主题/模板</a></li> -->
-                <li><a href="http://www.bootcss.com/" target="_blank">嘿习惯</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-
+<jsp:include page="header.jsp"/>
 <div class="container">
 
   <input type="hidden" id="demoCount" value="${demoCount}">
@@ -70,7 +33,12 @@
 
         }
         Demo.prototype = {
-            'init':function(){
+            init:function(){
+                this.bindRandomSelectEvent();
+
+            },
+            // 绑定随机选择题目的事件
+            bindRandomSelectEvent:function(){
                 $("#randomSelectButton").on("click",function(){
                     //清空之前选择的
                     $(".list-group-item.list-group-item-danger").attr("class", "list-group-item list-group-item-info");
@@ -85,6 +53,7 @@
                     $("#demotitle"+id).attr("class","list-group-item list-group-item-danger");
                 })
             }
+
         }
         var demo = new Demo();
         function getRandom(min,max){
